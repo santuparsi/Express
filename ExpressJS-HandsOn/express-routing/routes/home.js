@@ -1,7 +1,10 @@
-let express = require("express");
-let app = express(); //application middleware
-let router = express.Router(); //router middleware
-app.use("/", router); //add middleware to the app
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+const router = express.Router();
+//add middlewares to the app
+app.use(bodyParser.json());
+app.use("/", router);
 router.get("/", (req, res) => {
   res.send("Hello World,This is default router");
 });
@@ -12,8 +15,9 @@ router.get("/profile", (req, res) => {
   res.send("Hello World,This is profile router");
 });
 router.get("/login", (req, res) => {
-  res.send("Hello World GoodMorning,This is login router");
+  res.send("Hello World,This is login router");
 });
 router.get("/logout", (req, res) => {
   res.send("Hello World,This is logout router");
 });
+module.exports = router;

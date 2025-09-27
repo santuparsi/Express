@@ -1,6 +1,7 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+const express = require("express");//import express
+const bodyParser = require("body-parser");//import body-parser
+const cors = require("cors");//to allow cross-origin requests
+//create express app
 const app = express();
 const port = 3000;
 //where we will keep the books
@@ -9,9 +10,10 @@ let books = [
   { id: 2, bookName: "React" },
 ];
 //configure the  middleware
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(cors());//to allow cross-origin requests
+//urlencoded: extended false means values can be strings or arrays
+app.use(bodyParser.urlencoded({ extended: false }));//to parse the incoming requests with urlencoded payloads
+app.use(bodyParser.json());//to parse the incoming requests with JSON payloads
 //get all books
 app.get("/books", (req, res) => {
   res.json(books);
@@ -30,7 +32,7 @@ app.get("/book/:id", (req, res) => {
 });
 //add new-book
 app.post("/book", (req, res) => {
-  const book = req.body;
+  const book = req.body;//reading book from request body
   console.log(book);
   books.push(book);
   res.send("Book is added to the database");

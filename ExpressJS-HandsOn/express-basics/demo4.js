@@ -1,19 +1,28 @@
 const express = require("express");
 const app = express();
-
-const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: false }));
-
 app.get("/", function (req, res) {
-  res.sendFile("index.html", { root: "." });
+  console.log("Got a GET request for the homepage");
+  res.send("Welcome to ExpressJs!");
 });
-
-app.post("/submit-student-data", function (req, res) {
-  const name = req.body.firstName + " " + req.body.lastName;
-
-  res.send(name + " Submitted Successfully!");
+app.post("/", function (req, res) {
+  console.log("Got a POST request for the homepage");
+  res.send("I am Impossible! ");
 });
-
-const server = app.listen(5000, function () {
-  console.log("Node server is running..");
+app.delete("/del_student", function (req, res) {
+  console.log("Got a DELETE request for /del_student");
+  res.send("I am Deleted!");
+});
+app.get("/enrolled_student", function (req, res) {
+  console.log("Got a GET request for /enrolled_student");
+  res.send("I am an enrolled student.");
+});
+// This responds a GET request for abcd, abxcd, ab123cd, and so on
+app.get("/ab*cd", function (req, res) {
+  console.log("Got a GET request for /ab*cd");
+  res.send("Pattern Matched.");
+});
+var server = app.listen(8000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+  console.log("Example app listening at http://%s:%s", host, port);
 });

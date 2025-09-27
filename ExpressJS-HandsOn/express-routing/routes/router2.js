@@ -14,9 +14,6 @@ router.get("/city/:id/:name", (req, res) => {
 router.get("/city/:id([0-9]{5})", (req, res) => {
   res.send(`id:${req.params.id}`);
 });
-//Other routes here(should be place last)
-app.get("*", function (req, res) {
-  res.send("Sorry, this is an invalid URL.");
-});
 
-app.listen(3000);
+
+
