@@ -1,14 +1,16 @@
 {
-  "name": "express-simple-web-app",
+  "name": "express-product-api-using-mongo",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^5.1.0",
+    "mongoose": "^8.18.2"
   }
 }
